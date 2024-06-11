@@ -2,7 +2,6 @@
 import { onMounted } from "vue";
 import { useTruckService } from "@/composables/truckService";
 
-import type Truck from "../types/Truck";
 import { TruckEnums } from "../types/TruckEnums";
 
 import { useDialog } from "primevue/usedialog";

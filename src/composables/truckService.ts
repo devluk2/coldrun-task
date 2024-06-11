@@ -73,7 +73,6 @@ export const useTruckService = () => {
 
   const updateTrucksList = (updatedTruck: Truck) => {
     const index = trucks.value.findIndex(({ id }) => id === updatedTruck.id);
-    console.log(updatedTruck);
     if (index !== -1) {
       trucks.value.splice(index, 1, updatedTruck);
     } else if ("id" in updatedTruck) {
@@ -83,7 +82,6 @@ export const useTruckService = () => {
 
   const removeTruckFromTruckList = (truckId: string) => {
     const index = trucks.value.findIndex(({ id }) => id === truckId);
-    console.log(index);
     if (index !== -1) {
       trucks.value.splice(index, 1);
     }
