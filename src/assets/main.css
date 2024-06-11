@@ -71,6 +71,9 @@
   }
 }
 
+.error {
+  color: red;
+}
 
 .lds-hourglass,
 .lds-hourglass:after {

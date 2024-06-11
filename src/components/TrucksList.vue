@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted } from "vue";
+import { useTruckService } from "@/composables/truckService";
 
 import type Truck from "../types/Truck";
 import { TruckEnums } from "../types/TruckEnums";
@@ -11,24 +12,16 @@ import TrucksAddNew from "./TrucksAddNew.vue";
 import TrucksEdit from "./TrucksEdit.vue";
 import TrucksRemove from "./TrucksRemove.vue";
 
-const loading = ref(true);
-const trucks = ref<Truck[]>([]);
-
 const dialog = useDialog();
 const toast = useToast();
 
-const fetchTrucks = async () => {
-  try {
-    const response = await fetch(
-      "http://qa-api-mock-3.eu-central-1.elasticbeanstalk.com/trucks"
-    );
-
-    trucks.value = await response.json();
-    loading.value = false;
-  } catch (error) {
-    console.error(error);
-  }
-};
+const {
+  loading,
+  trucks,
+  fetchTrucks,
+  updateTrucksList,
+  removeTruckFromTruckList,
+} = useTruckService();
 
 onMounted(() => {
   fetchTrucks();
@@ -97,24 +90,6 @@ const showRemoveTruck = (id: string) => {
         });
       }
     },
-  });
-};
-
-const updateTrucksList = (data: Truck) => {
-  const index = trucks.value.findIndex((item: any) => {
-    return item.id === data.id;
-  });
-
-  if (index > -1) {
-    trucks.value[index] = data;
-  } else {
-    trucks.value.push(data);
-  }
-};
-
-const removeTruckFromTruckList = (id: string) => {
-  trucks.value = trucks.value.filter((truck) => {
-    return truck.id !== id;
   });
 };
 

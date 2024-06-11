@@ -20,6 +20,11 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 npm install
 ```
 
+### .env setup
+```
+Copy .env.example to .env and update VITE_API_ENDPOINT accordingly
+```
+
 ### Compile and Hot-Reload for Development
 
 ```sh

@@ -19,7 +19,7 @@ const removeTruck = async () => {
 
   try {
     await fetch(
-      `http://qa-api-mock-3.eu-central-1.elasticbeanstalk.com/trucks/${id.value}`,
+      `${import.meta.env.VITE_API_ENDPOINT}/trucks/${id.value}`,
       requestOptions
     );
 
